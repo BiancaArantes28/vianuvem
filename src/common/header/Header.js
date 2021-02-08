@@ -140,9 +140,6 @@ export default function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem><a>Dashboard</a></MenuItem>
-      <MenuItem><a>Currículo</a></MenuItem>
-      <MenuItem><a>Projetos</a></MenuItem>
       <MenuItem><a><Icon className="fas fa-shopping-cart" /></a></MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
