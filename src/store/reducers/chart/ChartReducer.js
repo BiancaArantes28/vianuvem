@@ -15,11 +15,11 @@ const defaultState = {
 
 const addItemsSuccessfull = (state, payload) => {
     let itemsAux = state.items;
-    let check = itemsAux.filter(p => p.id === payload.id)
+    let check = itemsAux.filter(p => p.id === payload.id);
     if (check.length > 0) {
         for(let i = 0; i < itemsAux.length; i++) {
             if (itemsAux[i].id === payload.id) {
-                itemsAux[i].qtd = itemsAux[i].qtd + itemsAux[i].qtd;
+                itemsAux[i].qtd = itemsAux[i].qtd + 1;
             }
         }
     } else {
@@ -41,10 +41,34 @@ const addItemsSuccessfull = (state, payload) => {
     };
 };
 
+const removeItem = (state, payload) => {
+    let itemsAux = state.items;
+    let productSelected = itemsAux.filter(p => p.id === payload.id);
+    if (productSelected[0].qtd > 1) {
+        for(let i = 0; i < itemsAux.length; i++) {
+            if (itemsAux[i].id === payload.id) {
+                itemsAux[i].qtd = itemsAux[i].qtd - 1;
+            }
+        }
+    } else {
+        itemsAux = itemsAux.filter(p => p.id !== payload.id);
+    }
+
+    const totalAux = parseFloat(state.total) - parseFloat(payload.price);
+    return {
+        ...withoutError(state),
+        status: status.FETCHED,
+        items: itemsAux,
+        total: totalAux.toFixed(2),
+    };
+}
+
 export default function products (state = defaultState, action) {
     switch (action.type) {
         case ADD_ITEMS:
             return addItemsSuccessfull(state, action.payload);
+        case REMOVE_ITEMS:
+            return removeItem(state, action.payload);
         default:
             return state;
     }

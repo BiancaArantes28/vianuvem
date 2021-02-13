@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HomeComponent = ({ addItemChart, items, products }) => {
+const HomeComponent = ({ addItemChart, items, products, removeItemChart }) => {
     const classes = useStyles();
     
     return (
@@ -29,7 +29,8 @@ const HomeComponent = ({ addItemChart, items, products }) => {
                             <CardComponent 
                                 addItemChart={addItemChart} 
                                 card={product} 
-                                items={items.filter(i => i.id === product.id).map(q => q.qtd)} />
+                                items={items.filter(i => i.id === product.id).map(q => q.qtd)}
+                                removeItemChart={removeItemChart} />
                         </Grid>
                     ))}
                 </Grid>

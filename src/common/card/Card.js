@@ -42,12 +42,11 @@ const useStyles = makeStyles({
     }
 });
 
-const CardComponent = ({ addItemChart, card, items }) => {
+const CardComponent = ({ addItemChart, card, items, removeItemChart }) => {
     const classes = useStyles();
     const [qtd, setQtd] = useState(0);
 
     useEffect(() => {
-        console.log("aqui = ", items[0]);
         setQtd(items[0] ? items[0] : 0);
     }, [items]);
     
@@ -64,8 +63,15 @@ const CardComponent = ({ addItemChart, card, items }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button className={classes.buttonCancel} size="small">
-                    <IndeterminateCheckBoxIcon />
+                <Button onClick={() => {
+                        if (qtd > 0) {
+                            removeItemChart(card);
+                        }
+                    }} 
+                    className={classes.buttonCancel} 
+                    size="small"
+                    disabled={qtd === 0}>
+                        <IndeterminateCheckBoxIcon />
                 </Button>
                 <div className={classes.qtdBox}>
                     <div className={classes.qtdText}>{qtd}</div>
