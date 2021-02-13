@@ -1,18 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardActions, CardContent, CardMedia, TextField, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, TextField, Typography } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 
 const useStyles = makeStyles({
     root: {
         maxWidth: 345,
-        minHeight: 500,
-        maxHeight: 500,
-    },
-    media: {
-        height: 350,
-        width: 340,
+        minHeight: 450,
+        maxHeight: 450,
     },
     buttonCancel: {
         marginTop: 15,
@@ -39,12 +35,11 @@ const CardComponent = ({ card }) => {
 
     return (
         <Card className={classes.root}>
-            <CardMedia
-                className={classes.media}
-                image={card.img}
-                title={card.name}
-            />
             <CardContent>
+                <img src={card.img} width="100%" height="250px" />
+                <Typography gutterBottom variant="h5" component="h2">
+                    {card.name}
+                </Typography>
                 <Typography gutterBottom variant="h5" component="h2">
                     R$ {card.price}
                 </Typography>
