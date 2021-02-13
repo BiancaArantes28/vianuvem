@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Card, CardActions, CardContent, TextField, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox';
 
@@ -9,6 +9,18 @@ const useStyles = makeStyles({
         maxWidth: 345,
         minHeight: 450,
         maxHeight: 450,
+    },
+    qtdBox: {
+        width: 'calc(100% - 128px)',
+        textAlign: 'center',
+        border: '1px solid #c6c5c5',
+        height: '32px',
+        marginTop: '15px',
+        display: 'table',
+    },
+    qtdText: {
+        display: 'table-cell',
+        verticalAlign: 'middle',
     },
     buttonCancel: {
         marginTop: 15,
@@ -30,9 +42,16 @@ const useStyles = makeStyles({
     }
 });
 
-const CardComponent = ({ card }) => {
+const CardComponent = ({ addItemChart, card, items }) => {
     const classes = useStyles();
+    const [qtd, setQtd] = useState(0);
 
+    useEffect(() => {
+        console.log("aqui = ", items[0]);
+        setQtd(items[0] ? items[0] : 0);
+    }, [items]);
+    
+    
     return (
         <Card className={classes.root}>
             <CardContent>
@@ -48,15 +67,10 @@ const CardComponent = ({ card }) => {
                 <Button className={classes.buttonCancel} size="small">
                     <IndeterminateCheckBoxIcon />
                 </Button>
-                <TextField
-                    id="qtd-input"
-                    label="Quantidade"
-                    defaultValue="1"
-                    InputProps={{
-                        readOnly: true,
-                    }}
-                />
-                <Button className={classes.buttonBuy} size="small">
+                <div className={classes.qtdBox}>
+                    <div className={classes.qtdText}>{qtd}</div>
+                </div>
+                <Button onClick={() => addItemChart(card)} className={classes.buttonBuy} size="small">
                     <AddBoxIcon />
                 </Button>
             </CardActions>
