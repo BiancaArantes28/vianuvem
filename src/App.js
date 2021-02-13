@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import './App.css';
 import store from './store';
 import Header from './common/header/Header';
-import HomeContainer from './features/HomeContainer';
+import HomeContainer from './features/home/HomeContainer';
 
 function App() {
   return (
