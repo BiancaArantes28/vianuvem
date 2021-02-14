@@ -1,11 +1,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-
-import './App.css';
 import store from './store';
+import ChartContainer from './features/chart/ChartContainer';
 import Header from './common/header/Header';
 import HomeContainer from './features/home/HomeContainer';
+import './App.css';
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <div className="container">
             <Switch>
               <Route path="/home" component={HomeContainer} />
+              <Route path="/chart" component={ChartContainer} />
               <Redirect to="/home" />
             </Switch>
           </div>

@@ -87,7 +87,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header() {
   const theme = useTheme();
-  console.log(theme);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -165,7 +164,8 @@ export default function Header() {
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <MenuItem><Link className={classes.shoppingCart} to="/home"><Icon component={ShoppingCartIcon} /></Link></MenuItem>
+            <MenuItem><Link className={classes.shoppingCart} to="/home">Produtos</Link></MenuItem>
+            <MenuItem><Link className={classes.shoppingCart} to="/chart"><Icon component={ShoppingCartIcon} /></Link></MenuItem>
             <IconButton
               edge="end"
               aria-label="account of current user"
