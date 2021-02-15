@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Button } from '@material-ui/core';
 import CardComponent from '../../common/card/Card';
@@ -17,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HomeComponent = ({ addItemChart, addProduct, items, products, removeItemChart }) => {
+const HomeComponent = ({ addItemChart, items, products, removeItemChart }) => {
     const classes = useStyles();
     
     return (
@@ -34,7 +35,9 @@ const HomeComponent = ({ addItemChart, addProduct, items, products, removeItemCh
                         </Grid>
                     ))}
                 </Grid>
-                <Button onClick={() => addProduct()}>Teste</Button>
+                <Button>
+                    <Link to='/product-form'>Adicionar Produto</Link>
+                </Button>
             </Grid>
         </Grid>
     );
