@@ -1,6 +1,7 @@
 export const ADD_PRODUCTS = 'ADD_PRODUCTS';
 export const ADD_PRODUCTS_SUCCESS = 'ADD_PRODUCTS_SUCCESS';
 export const ADD_PRODUCTS_FAILED = 'ADD_PRODUCTS_FAILED';
+export const CLEAN_PRODUCT_FORM = 'CLEAN_PRODUCT_FORM';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS';
 export const GET_PRODUCTS_FAILED = 'GET_PRODUCTS_FAILED';
@@ -32,4 +33,8 @@ export const addProductsSuccess = (payload) => ({
 export const addProductsFailed = (error) => ({
     type: ADD_PRODUCTS_FAILED,
     payload: error,
+});
+
+export const cleanProductForm = () => ({
+    type: CLEAN_PRODUCT_FORM,
 });
