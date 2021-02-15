@@ -45,16 +45,23 @@ const useStyles = makeStyles({
 const CardComponent = ({ addItemChart, card, items, removeItemChart }) => {
     const classes = useStyles();
     const [qtd, setQtd] = useState(0);
+    const imgs = [
+        'https://images-americanas.b2w.io/produtos/01/00/img/1299774/4/1299774456_1GG.jpg',
+        'https://images-americanas.b2w.io/produtos/01/00/img/2575108/6/2575108611_1GG.jpg',
+        'https://images-americanas.b2w.io/produtos/01/00/img/2872269/4/2872269488_1GG.jpg',
+        'https://images-americanas.b2w.io/produtos/01/00/img/1865734/0/1865734054_1GG.jpg',
+        'https://images-americanas.b2w.io/produtos/1836968361/imagens/smartband-xiaomi-miband-5-versao-global/1836968361_1_large.jpg',
+        'https://images-americanas.b2w.io/produtos/01/00/img/2795766/4/2795766480_1GG.jpg',
+    ];
 
     useEffect(() => {
         setQtd(items[0] ? items[0] : 0);
     }, [items]);
     
-    
     return (
         <Card className={classes.root}>
             <CardContent>
-                <img src={card.img} width="100%" height="250px" />
+                <img src={imgs[Math.floor(Math.random() * imgs.length)]} width="100%" height="250px" />
                 <Typography gutterBottom variant="h5" component="h2">
                     {card.name}
                 </Typography>
