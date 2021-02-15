@@ -5,10 +5,14 @@ import ChartComponent from './ChartComponent';
 
 const ChartContainer = () => {
     const { items, total } = useSelector((state) => state.chart);
+    const { products } = useSelector((state) => state.products);
     const dispatch = useDispatch();
 
     const addItemChart = useCallback((item) => {
-        dispatch(addItems(item));
+        let product = products.filter(p => item.id === p.id);
+        if (item.qtd < parseInt(product[0].qtd)) {
+            dispatch(addItems(item));
+        }
     }, [dispatch]);
 
     const removeItemChart = useCallback((item) => {

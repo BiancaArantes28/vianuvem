@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -75,7 +75,11 @@ const CardComponent = ({ addItemChart, card, items, removeItemChart }) => {
                 <div className={classes.qtdBox}>
                     <div className={classes.qtdText}>{qtd}</div>
                 </div>
-                <Button onClick={() => addItemChart(card)} className={classes.buttonBuy} size="small">
+                <Button onClick={() => {
+                    if (qtd < parseInt(card.qtd)) {
+                        addItemChart(card);
+                    }
+                }} className={classes.buttonBuy} size="small">
                     <AddBoxIcon />
                 </Button>
             </CardActions>
