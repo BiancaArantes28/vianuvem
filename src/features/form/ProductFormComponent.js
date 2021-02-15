@@ -43,7 +43,6 @@ const ProductFormComponent = ({ addProduct, message, error, success }) => {
 
     const submitForm = useCallback((e) => {
         e.preventDefault();
-        console.log("aqui submit = ", name)
         const payload = {
             name,
             price,

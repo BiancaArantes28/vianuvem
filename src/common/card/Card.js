@@ -6,9 +6,7 @@ import IndeterminateCheckBoxIcon from '@material-ui/icons/IndeterminateCheckBox'
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
-        minHeight: 450,
-        maxHeight: 450,
+        minWidth: 345,
     },
     qtdBox: {
         width: 'calc(100% - 128px)',
@@ -53,7 +51,6 @@ const CardComponent = ({ addItemChart, card, items, removeItemChart }) => {
     return (
         <Card className={classes.root}>
             <CardContent>
-                <img src={card.img} width="100%" height="250px" />
                 <Typography gutterBottom variant="h5" component="h2">
                     {card.name}
                 </Typography>
