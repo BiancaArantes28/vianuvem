@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import CardComponent from '../../common/card/Card';
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HomeComponent = ({ addItemChart, items, products, removeItemChart }) => {
+const HomeComponent = ({ addItemChart, addProduct, items, products, removeItemChart }) => {
     const classes = useStyles();
     
     return (
@@ -34,6 +34,7 @@ const HomeComponent = ({ addItemChart, items, products, removeItemChart }) => {
                         </Grid>
                     ))}
                 </Grid>
+                <Button onClick={() => addProduct()}>Teste</Button>
             </Grid>
         </Grid>
     );

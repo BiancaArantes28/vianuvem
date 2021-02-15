@@ -1,15 +1,21 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
     GET_PRODUCTS,
+    fetchGetProducts,
     fetchGetProductsSuccess,
     fetchGetProductsFailed,
+    ADD_PRODUCTS,
+    addProductsSuccess,
+    addProductsFailed,
 } from '../../actions/products/ProductsActions';
 import { getAPIURL } from '../../../config/getPATH';
-import { fetchGet } from '../sagas.utils';
+import { fetchGet, fetchPost } from '../sagas.utils';
+import { getProducts } from '../../selectors/products/ProductsSelectors';
 
 export function* doFetchProducts() {
     try {
         const url = `${getAPIURL()}/api/products/list`;
+
         const imgs = [
             'https://images-americanas.b2w.io/produtos/01/00/img/1299774/4/1299774456_1GG.jpg',
             'https://images-americanas.b2w.io/produtos/01/00/img/2575108/6/2575108611_1GG.jpg',
@@ -34,6 +40,18 @@ export function* doFetchProducts() {
     }
 }
 
+export function* doAddProducts(action) {
+    try {
+        const url = `${getAPIURL()}/api/products/list`;
+         yield call(fetchPost, url, action.payload);
+        yield put(addProductsSuccess('Produto criado com sucesso!'));
+        yield put(fetchGetProducts());
+    } catch (error) {
+        yield put(addProductsFailed(error));
+    }
+}
+
 export const ProductsSagas = [
     takeLatest(GET_PRODUCTS, doFetchProducts),
+    takeLatest(ADD_PRODUCTS, doAddProducts),
 ];
